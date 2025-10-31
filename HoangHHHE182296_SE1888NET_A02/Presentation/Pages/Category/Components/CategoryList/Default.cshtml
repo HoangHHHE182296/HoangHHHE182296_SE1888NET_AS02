@@ -32,8 +32,8 @@
                     <td>@(item.Parent == null ? "-" : item.Parent.Name)</td>
                     <td>@item.ArticleQuantity</td>
                     <td>
-                        <a asp-action="Edit" class="btn btn-sm btn-warning me-1" data-bs-toggle="modal" data-bs-target="#modal" data-action-type="@(ActionType.Update)" data-id="@item.Id">Edit</a>
-                        <a asp-action="Delete" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal" data-action-type="@(ActionType.Delete)" data-id="@item.Id">Delete</a>
+                        <a asp-action="Edit" class="btn btn-sm btn-warning me-1" data-bs-toggle="modal" data-bs-target="#modal" data-action-type="@(ActionType.Update)" data-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit</a>
+                        <a asp-action="Delete" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modal" data-action-type="@(ActionType.Delete)" data-id="@item.Id"> <i class="bi bi-trash"></i>Delete</a>
                     </td>
                 </tr>
                 count++;

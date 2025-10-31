@@ -3,6 +3,7 @@ using BusinessLogic.DTOs.Requests;
 using BusinessLogic.DTOs.Response;
 using BusinessLogic.Rules;
 using BusinessLogic.Validation;
+using Core.Enums;
 using DataAccess.Entities;
 using DataAccess.Repositories;
 using Microsoft.Extensions.Configuration;
@@ -35,15 +36,46 @@ namespace BusinessLogic.Services {
 
             var adminEmail = _configuration["AdminAccount:Email"];
             if (email == adminEmail) {
+
+                var adminName = _configuration["AdminAccount:Name"];
+                var adminRole = int.Parse(_configuration["AdminAccount:Role"]);
+                var adminPassword = _configuration["AdminAccount:Password"]; 
+
+
+                var existingAdmin = await _systemAccountRepository.GetAccountAsync(adminEmail);
+                if (existingAdmin == null) {
+                    var adminAccount = new SystemAccount {
+                        AccountId = 0,
+                        AccountEmail = adminEmail,
+                        AccountName = adminName,
+                        AccountPassword = adminPassword,
+                        AccountRole = (int)Role.Admin,
+                    };
+                    await _systemAccountRepository.AddAccountAsync(adminAccount);
+
+                    var admin = await _systemAccountRepository.GetAccountAsync(adminEmail);
+                    return new LoginResponse {
+                        AccountId = admin.AccountId,
+                        AccountEmail = adminEmail,
+                        AccountName = adminName,
+                        AccountRole = adminRole
+                    };
+                }
                 return new LoginResponse {
+                    AccountId = existingAdmin.AccountId,
                     AccountEmail = adminEmail,
-                    AccountName = _configuration["AdminAccount:Name"],
-                    AccountRole = int.Parse(_configuration["AdminAccount:Role"])
+                    AccountName = adminName,
+                    AccountRole = adminRole
                 };
             }
 
             var account = await _systemAccountRepository.GetAccountAsync(email);
-            return new LoginResponse { AccountName = account.AccountName, AccountEmail = account.AccountEmail, AccountRole = account.AccountRole };
+            return new LoginResponse {
+                AccountId = account.AccountId,
+                AccountName = account.AccountName,
+                AccountEmail = account.AccountEmail,
+                AccountRole = account.AccountRole
+            };
         }
 
         public async Task<IEnumerable<SystemAccountResponse>> SearchAccountAsync(string? keyword, int? accountRole) {

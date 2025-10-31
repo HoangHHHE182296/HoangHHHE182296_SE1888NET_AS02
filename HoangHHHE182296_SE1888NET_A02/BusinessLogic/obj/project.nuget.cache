@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7QuHo4Fz5MI=",
+  "dgSpecHash": "p/EZcUcLVBU=",
   "success": true,
-  "projectFilePath": "D:\\FPT\\PRN222\\Assigment\\A02\\HoangHHHE182296_SE1888NET_A02\\BusinessLogic\\BusinessLogic.csproj",
+  "projectFilePath": "D:\\FPT\\PRN222\\Assignments\\AS02\\HoangHHHE182296_SE1888NET_AS02\\HoangHHHE182296_SE1888NET_A02\\BusinessLogic\\BusinessLogic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

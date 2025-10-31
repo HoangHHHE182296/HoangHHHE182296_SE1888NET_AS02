@@ -1,6 +1,7 @@
 wwwroot\css\site.css
 wwwroot\favicon.ico
 wwwroot\js\account.js
+wwwroot\js\article.js
 wwwroot\js\category.js
 wwwroot\js\choxukjf.blh~
 wwwroot\js\site.js

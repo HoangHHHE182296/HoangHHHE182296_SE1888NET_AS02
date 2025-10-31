@@ -63,7 +63,7 @@
             </nav>
         </header>
     }
-    <div class="container">
+    <div>
         <main role="main" class="pb-3">
             <partial name="_Notification" />
             @RenderBody()
@@ -81,7 +81,6 @@
     <partial name="_ValidationScriptsPartial" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

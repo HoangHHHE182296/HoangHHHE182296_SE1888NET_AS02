@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qYpej5ElK68=",
+  "dgSpecHash": "4ViqHGQHDpw=",
   "success": true,
-  "projectFilePath": "D:\\FPT\\PRN222\\Assigment\\A02\\HoangHHHE182296_SE1888NET_A02\\Presentation\\Presentation.csproj",
+  "projectFilePath": "D:\\FPT\\PRN222\\Assignments\\AS02\\HoangHHHE182296_SE1888NET_AS02\\HoangHHHE182296_SE1888NET_A02\\Presentation\\Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

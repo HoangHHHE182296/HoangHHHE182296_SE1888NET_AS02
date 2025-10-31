@@ -42,10 +42,10 @@ namespace Presentation.Pages.Account {
         public async Task<IActionResult> OnGetOpenModalAsync(ActionType actionType, int? accountId) {
             switch (actionType) {
                 case ActionType.Create:
-                return ViewComponent("CreateUpdateForm", new { actionType = ActionType.Create });
+                return ViewComponent("AccountCreateUpdateForm", new { actionType = ActionType.Create });
                 case ActionType.Update:
                 var account = await _systemAccountService.GetAccountByIdAsync(accountId.Value);
-                return ViewComponent("CreateUpdateForm", new {
+                return ViewComponent("AccountCreateUpdateForm", new {
                     actionType = ActionType.Update, createUpdateAccountParams = new CreateUpdateAccountParams {
                         Name = account.AccountName,
                         Email = account.AccountEmail,
@@ -54,7 +54,7 @@ namespace Presentation.Pages.Account {
                 });
                 case ActionType.Delete:
                 account = await _systemAccountService.GetAccountByIdAsync(accountId.Value);
-                return ViewComponent("DeleteForm", account.AccountName);
+                return ViewComponent("AccountDeleteForm", account.AccountName);
                 case ActionType.UpdatePassword:
                 account = await _systemAccountService.GetAccountByIdAsync(accountId.Value);
                 return ViewComponent("UpdatePasswordForm", account.AccountName);
@@ -65,7 +65,7 @@ namespace Presentation.Pages.Account {
 
         public async Task<IActionResult> OnPostCreateUpdateAsync(ActionType actionType, [FromForm] CreateUpdateAccountParams createUpdateAccountParams) {
             if (!ModelState.IsValid) {
-                return ViewComponent("CreateUpdateForm", new { actionType = actionType, createUpdateAccountParams = createUpdateAccountParams });
+                return ViewComponent("AccountCreateUpdateForm", new { actionType = actionType, createUpdateAccountParams = createUpdateAccountParams });
             }
 
             try {
@@ -95,7 +95,7 @@ namespace Presentation.Pages.Account {
             } catch (InvalidOperationException ex) {
                 ModelState.AddModelError("Email", ex.Message);
                 Response.StatusCode = 400;
-                return ViewComponent("CreateUpdateForm", new { actionType = actionType, createUpdateAccountParams = createUpdateAccountParams });
+                return ViewComponent("AccountCreateUpdateForm", new { actionType = actionType, createUpdateAccountParams = createUpdateAccountParams });
             } catch (Exception ex) {
                 return new JsonResult(new { success = false, message = ex.Message });
             }
@@ -135,5 +135,7 @@ namespace Presentation.Pages.Account {
                 return new JsonResult(new { success = false, message = ex.Message });
             }
         }
+
+        
     }
 }

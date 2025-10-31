@@ -15,6 +15,17 @@ namespace Presentation {
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DBConnection")));
+
+            builder.Services.AddScoped<ITagRepository, TagRepository>();
+            //builder.Services.AddScoped<TagValidator>();
+            //builder.Services.AddScoped<TagRules>();
+            builder.Services.AddScoped<TagService>();
+
+            builder.Services.AddScoped<INewsArticleRepository, NewsArticleRepository>();
+            builder.Services.AddScoped<NewsArticleValidator>();
+            builder.Services.AddScoped<NewsArticleRules>();
+            builder.Services.AddScoped<NewsArticleService>();
+
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<CategoryValidator>();
             builder.Services.AddScoped<CategoryRules>();

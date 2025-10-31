@@ -23,5 +23,16 @@ namespace DataAccess.Repositories {
                 .Where(t => ids.Contains(t.TagId))
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<Tag>> SearchTagAsync(string? keyword) {
+            keyword = keyword?.ToLower();
+            var query = _dbContext.Tags.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(keyword)) {
+                query = query.Where(a => a.TagName.ToLower().Contains(keyword));
+            }
+
+            return await query.ToListAsync();
+        }
     }
 }

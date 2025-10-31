@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Repositories {
     public interface INewsArticleRepository {
-        Task<IEnumerable<NewsArticle>> SearchNewsArticleAsync(string? keyword, string? author, string? category, bool? isActive);
+        Task<IEnumerable<NewsArticle>> SearchNewsArticleAsync(string? keyword, string? author, string? category, bool? isActive, DateTime? from, DateTime? to);
         Task<NewsArticle> GetNewsArticleByIdAsync(string newsArticleId);
         Task<NewsArticle?> GetNewsArticleByTitleAsync(string newsTitle);
         Task AddNewsArticleAsync(NewsArticle newsArticle);

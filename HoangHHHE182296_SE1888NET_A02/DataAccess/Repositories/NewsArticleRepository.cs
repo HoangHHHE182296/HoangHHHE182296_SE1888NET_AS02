@@ -16,10 +16,10 @@ namespace DataAccess.Repositories {
         }
 
         public async Task<NewsArticle> GetNewsArticleByIdAsync(string newsArticleId) {
-            return await _dbContext.NewsArticles.FirstOrDefaultAsync(a => a.NewsArticleId == newsArticleId);
+            return await _dbContext.NewsArticles.Include(a => a.Category).Include(a => a.Tags).FirstOrDefaultAsync(a => a.NewsArticleId == newsArticleId);
         }
 
-        public async Task<NewsArticle?> GetNewsArticleByTitleAsync(string newsTitle) => await _dbContext.NewsArticles.FirstOrDefaultAsync(a => a.NewsTitle == newsTitle);
+        public async Task<NewsArticle?> GetNewsArticleByTitleAsync(string newsTitle) => await _dbContext.NewsArticles.Include(a => a.Category).Include(a => a.Tags).FirstOrDefaultAsync(a => a.NewsTitle == newsTitle);
 
         public async Task AddNewsArticleAsync(NewsArticle newsArticle) {
             if (string.IsNullOrEmpty(newsArticle.NewsSource)) {
@@ -27,18 +27,20 @@ namespace DataAccess.Repositories {
             }
 
             newsArticle.CreatedDate = DateTime.Now;
-            newsArticle.ModifiedDate = DateTime.Now;
+
+            var lastId = await this.GetLastIdAsync();
+            newsArticle.NewsArticleId = int.Parse(lastId) + 1 + "";
 
             await _dbContext.NewsArticles.AddAsync(newsArticle);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<NewsArticle>> SearchNewsArticleAsync(string? keyword, string? author, string? category, bool? isActive) {
+        public async Task<IEnumerable<NewsArticle>> SearchNewsArticleAsync(string? keyword, string? author, string? category, bool? isActive, DateTime? from, DateTime? to) {
             keyword = keyword?.ToLower();
             author = author?.ToLower();
             category = category?.ToLower();
 
-            var query = _dbContext.NewsArticles.AsQueryable();
+            var query = _dbContext.NewsArticles.Include(a => a.Category).Include(a => a.Tags).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(keyword)) {
                 query = query.Where(a => a.NewsTitle.ToLower().Contains(keyword));
@@ -56,13 +58,17 @@ namespace DataAccess.Repositories {
                 query = query.Where(a => a.NewsStatus == isActive.Value);
             }
 
+            if (from.HasValue) {
+                query = query.Where(a => a.CreatedDate >= from.Value);
+            }
+
             return await query.ToListAsync();
 
         }
 
         public async Task DeleteNewsArticleAsync(string newsArticleId) {
-            var existing = await _dbContext.NewsArticles.FirstOrDefaultAsync(a => a.NewsArticleId == newsArticleId);
-            existing.Tags = null;
+            var existing = await _dbContext.NewsArticles.Include(a => a.Tags).FirstOrDefaultAsync(a => a.NewsArticleId == newsArticleId);
+            existing.Tags = null!;
             await _dbContext.SaveChangesAsync();
 
             await _dbContext.NewsArticles.Where(a => a.NewsArticleId == newsArticleId).ExecuteDeleteAsync();
@@ -95,6 +101,8 @@ namespace DataAccess.Repositories {
                 existing.CategoryId = newsArticle.CategoryId.Value;
             }
 
+            existing.Tags = newsArticle.Tags;
+
             existing.ModifiedDate = DateTime.Now;
 
             return _dbContext.SaveChangesAsync();
@@ -108,5 +116,11 @@ namespace DataAccess.Repositories {
             return _dbContext.NewsArticles.Where(a => a.CategoryId == categoryId).CountAsync();
         }
 
+        private async Task<string> GetLastIdAsync() {
+            return await _dbContext.NewsArticles
+                .OrderByDescending(a => a.NewsArticleId)
+                .Select(a => a.NewsArticleId)
+                .FirstOrDefaultAsync();
+        }
     }
 }

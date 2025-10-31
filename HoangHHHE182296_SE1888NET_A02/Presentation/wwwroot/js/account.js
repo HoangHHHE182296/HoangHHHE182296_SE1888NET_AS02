@@ -106,6 +106,7 @@ $(document).ready(function () {
         });
     });
 
+
     // Submit Modal
     $('#account-form').on('submit', function (e) {
         e.preventDefault();
@@ -205,14 +206,17 @@ $(document).ready(function () {
                     url: '/Account/Index?handler=Delete',
                     type: 'POST',
                     data: { accountId },
-                    success: function () {
-                       
-                        $('#search-form').trigger('submit');
-                        $('#modal').modal('hide');
-                        toastr.success('An account has been deleted successfully!');
+                    success: function (response) {
+                        if (response.success) {
+                            $('#search-form').trigger('submit');
+                            $('#modal').modal('hide');
+                            toastr.success('An account has been deleted successfully!');
+                        } else {
+                            toastr.error(response.message);
+                        }
                     },
-                    error: function (xhr) {
-                        toastr.error(xhr.responseText || 'Something went wrong!');
+                    error: function () {
+                        toastr.error('Unable to delete this account. Please try again!');
                     }
                 });
                 break;

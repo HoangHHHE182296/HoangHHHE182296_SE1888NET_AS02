@@ -4697,11 +4697,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPT\\PRN222\\Assigment\\A02\\HoangHHHE182296_SE1888NET_A02\\DataAccess\\DataAccess.csproj",
+      "projectUniqueName": "D:\\FPT\\PRN222\\Assignments\\AS02\\HoangHHHE182296_SE1888NET_AS02\\HoangHHHE182296_SE1888NET_A02\\DataAccess\\DataAccess.csproj",
       "projectName": "DataAccess",
-      "projectPath": "D:\\FPT\\PRN222\\Assigment\\A02\\HoangHHHE182296_SE1888NET_A02\\DataAccess\\DataAccess.csproj",
+      "projectPath": "D:\\FPT\\PRN222\\Assignments\\AS02\\HoangHHHE182296_SE1888NET_AS02\\HoangHHHE182296_SE1888NET_A02\\DataAccess\\DataAccess.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "D:\\FPT\\PRN222\\Assigment\\A02\\HoangHHHE182296_SE1888NET_A02\\DataAccess\\obj\\",
+      "outputPath": "D:\\FPT\\PRN222\\Assignments\\AS02\\HoangHHHE182296_SE1888NET_AS02\\HoangHHHE182296_SE1888NET_A02\\DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

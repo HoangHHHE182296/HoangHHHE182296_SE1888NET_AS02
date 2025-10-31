@@ -29,7 +29,7 @@ namespace BusinessLogic.Rules {
         }
 
         private async Task CheckNewsArticleAsync(string newsTitle, CheckMode mode) {
-            var article = await _newsArticleRepository.GetNewsArticleByTitleAsync(newsTitle);
+            var article = await _newsArticleRepository.GetNewsArticleByTitleAsync(newsTitle);   
             switch (mode) {
                 case CheckMode.MustExist:
                 if (article == null)

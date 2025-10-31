@@ -1,6 +1,10 @@
-﻿@page
-@model Presentation.Pages.Category.Components.CreateUpdateForm.DefaultModel
+﻿@using Core.Enums
+@using Presentation.Models.Data
+@model Presentation.Models.Params.CreateUpdateCategoryParams
+
 @{
+    var action = (ActionType)ViewData["ActionType"];
+    var categories = ViewData["Categories"] as List<CategoryData>;
 }
 
 <div class="row mb-3">
@@ -13,9 +17,12 @@
     <div class="col-md-6">
         <label for="role" class="form-label">Parent</label>
         <select id="role" asp-for="ParentId" class="form-select">
-            <option value="0" selected="@(ViewBag.ModalType == CategoryModalConst.Create.Value)">None</option>
-            @foreach (var category in ViewBag.Categories) {
-                <option value="@category.Category.Id" selected="@(ViewBag.ModalType == CategoryModalConst.Edit.Value && Model.ParentId == category.Category.Id)">@category.Category.Name</option>
+            <option value="0" selected="@(action == ActionType.Create)">None</option>
+            @foreach (var category in categories ?? []) {
+                <option value="@category.Id"
+                        selected="@(action == ActionType.Update && Model.ParentId == category.Id)">
+                    @category.Name
+                </option>
             }
         </select>
     </div>

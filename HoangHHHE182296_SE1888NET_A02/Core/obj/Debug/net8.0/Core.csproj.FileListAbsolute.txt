@@ -9,3 +9,15 @@ D:\FPT\PRN222\Assigment\A02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\
 D:\FPT\PRN222\Assigment\A02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\refint\Core.dll
 D:\FPT\PRN222\Assigment\A02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.pdb
 D:\FPT\PRN222\Assigment\A02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\ref\Core.dll
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\bin\Debug\net8.0\Core.deps.json
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\bin\Debug\net8.0\Core.dll
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\bin\Debug\net8.0\Core.pdb
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.AssemblyInfoInputs.cache
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.AssemblyInfo.cs
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.csproj.CoreCompileInputs.cache
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.sourcelink.json
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.dll
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\refint\Core.dll
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\Core.pdb
+D:\FPT\PRN222\Assignments\AS02\HoangHHHE182296_SE1888NET_AS02\HoangHHHE182296_SE1888NET_A02\Core\obj\Debug\net8.0\ref\Core.dll

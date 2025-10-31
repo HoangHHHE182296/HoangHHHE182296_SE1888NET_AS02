@@ -65,7 +65,6 @@ namespace BusinessLogic.Services {
 
         public async Task<CategoryResponse> GetCategoryByIdAsync(int categoryId) {
             var category = await _categoryRepository.GetCategoryByIdAsync(categoryId);
-
             return new CategoryResponse {
                 CategoryId = category.CategoryId,
                 CategoryName = category.CategoryName,

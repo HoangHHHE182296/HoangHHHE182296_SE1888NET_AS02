@@ -9,6 +9,7 @@ namespace Core.Enums {
         Create = 1,
         Update = 2,
         Delete = 3,
-        UpdatePassword = 4
+        UpdatePassword = 4,
+        Duplicate = 5
     }
 }
